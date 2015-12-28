@@ -1,0 +1,16 @@
+﻿
+#InputTextArea, #OutputTextArea {
+    width: 100%;
+    height: 400px;
+    margin: 0 auto 20px;
+    max-width: none;
+    vertical-align: top;
+}
+
+#SystemMessageTextArea {
+    width: 100%;
+    margin: 50px auto;
+    color: #ff0000;
+    max-width: none;
+}
+

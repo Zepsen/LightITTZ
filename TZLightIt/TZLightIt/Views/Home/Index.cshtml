@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Cesar";
+}
+
+<form class="jumbotron" ng-controller="myController" name="myForm" novalidate>
+    <div class="row">
+        <h1>Cesar</h1>
+        <hr/>
+
+        @* Input for encode/decode text *@
+        <div class="col-md-5">
+            <textarea ng-model="inputText" id="InputTextArea" name="InputTextArea"
+                      class="form-control" required="required" placeholder="Enter you text here..."></textarea>
+        </div>
+
+        @* Settings  *@
+        <div class="col-md-2 text-center">
+            <label>Set the step:</label>
+            <input type="number" ng-model="inputStep" id="InputStepTextBox" name="InputStepTextBox" class="form-control  text-center" min="0"/>
+            <button type="button" ng-click="postAjax('Encode')" name="Encode" class="btn btn-default btn-info" ng-disabled="myForm.InputTextArea.$pristine || myForm.InputTextArea.$dirty && myForm.InputTextArea.$invalid || myForm.InputStepTextBox.$error.min ">
+                Encode &laquo;
+            </button>
+            <button type="button" ng-click="postAjax('Decode')" name="Decode" class="btn btn-default btn-info" ng-disabled="myForm.InputTextArea.$pristine || myForm.InputTextArea.$dirty && myForm.InputTextArea.$invalid || myForm.InputStepTextBox.$error.min ">
+                Decode &raquo;
+            </button>
+            <button type="button" ng-click="clear()" name="Clear" class="btn btn-default btn-info">Clear</button>
+        </div>
+
+        @* Results *@
+        <div class="col-md-5">
+            <textarea ng-model="outputText" id="OutputTextArea" name="OutputTextArea" class="form-control" placeholder="The result will be show here.." readonly="readonly"></textarea>
+        </div>
+
+        @* Diagram  *@
+        <div id="diagramContainer" class="col-md-offset-3 col-md-6"></div>
+
+        @* System Message Container *@
+        <div class="col-md-offset-2 col-md-8">
+            <textarea ng-model="systemMessage" id="SystemMessageTextArea" name="SystemMessageTextArea" class="form-control" readonly="readonly" placeholder="System message"></textarea>
+        </div>
+    </div>
+</form>
+
+@section scripts{
+    <script src="~/Scripts/AngularCustomScripts/angularAjax.js"></script>
+}
